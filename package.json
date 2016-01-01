@@ -1,0 +1,43 @@
+{
+  "name": "flash-notification-react-redux",
+  "version": "1.0.1",
+  "description": "An es6 growl like notification plugin for redux",
+  "main": "index.js",
+  "es6": "es5/index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/posabsolute/flash-notification-react-redux.git"
+  },
+  "keywords": [
+    "growl",
+    "flash",
+    "redux",
+    "react"
+  ],
+  "author": {
+    "name": "Cedric Dugas"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/posabsolute/flash-notification-react-redux/issues"
+  },
+  "homepage": "https://github.com/posabsolute/flash-notification-react-redux#readme",
+  "readme": "# flash-notification-react-redux\nAn es6 growl like notification plugin for redux.\n\n## Integration\n\n1. Add the reducer to your root reducer\n\n```javascript\n\nimport { growlerReducer } from 'flash-notification-react-redux';\n\nconst rootReducer = combineReducers({\n  growlerReducer,\n});\n\nexport default rootReducer;\n```\n\n2. Add the growler component to your app root component so it is always accessible\n```javascript\nimport { GrowlerComponent } from 'flash-notification-react-redux';\n\nexport class App extends Component {\n  static propTypes = {\n    children: React.PropTypes.any,\n  }\n  render() {\n    return (\n      <section>\n        <GrowlerComponent />\n        {this.props.children}\n      </section>\n    );\n  }\n}\n\n3. You're done.\n\n\n## Limitations\n\nThis component is based on the use of redux, react, es6 & es7 (decorators), and webpack for loading the css as an import module. It's a tiny codebase so it is easily portable if you want to bend it to your use case.\n\n\n\n\n\n\n\n",
+  "readmeFilename": "README.md",
+  "gitHead": "8e11d910531ec4994e0f12052e82838be557ad6a",
+  "_id": "flash-notification-react-redux@1.0.1",
+  "_shasum": "cdc76278c4777dde6b0470fcbaaa1df91fc1808e",
+  "_from": "flash-notification-react-redux@>=1.0.1 <2.0.0",
+  "dependencies": {
+    "classnames": "^2.2.1",
+    "react": "^0.14.3",
+    "react-redux": "^4.0.5",
+    "redux": "^3.0.5"
+  }
+}
