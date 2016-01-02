@@ -86,6 +86,8 @@ dispatch({
 
 ### With the actions
 
+
+
 If made available in your components, you can call the action showGrowler(text, status),
 
 Example:
@@ -114,11 +116,11 @@ export default class SprintsListContainer extends React.Component {
 
 Options are passed down when you add the component to your app root.
 
-|  Option |  Default Value | Type | Description |
-|---|---|---|
-|  shownFor |  3000 | Milliseconds  | Time the growler is shown |
-| messages  | - | Object | Localization in every supported languages of your messages
-|  currentLocale | 'enUS' | String | Locale used to retrieve messages
+| Option | Default Value          | Default Value          | Description          |
+| ------------- | ----------- | ----------- | ----------- |
+| shownFor      | 3000| Milliseconds | Time the growler is shown |
+| messages     | -     | Object | Localization in every supported languages of your messages |
+| currentLocale     | enUS     | String |  Locale used to retrieve messages |
 
 ```javascript
 import { GrowlerComponent } from 'flash-notification-react-redux';
