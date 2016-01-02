@@ -67,7 +67,7 @@ Example:
 ```javascript
 dispatch({
   type: 'GROWLER__SHOW',
-  growler: {
+  content: {
     text: 'Please enter your JIRA url',
     type: 'growler--error',
   },
@@ -77,7 +77,7 @@ dispatch({
 ```javascript
 dispatch({
   type: 'GROWLER__SHOW',
-  growler: {
+  content: {
     text: 'You have succesfully logged in',
     type: 'growler--success',
   },
@@ -114,9 +114,11 @@ export default class SprintsListContainer extends React.Component {
 
 Options are passed down when you add the component to your app root.
 
-### Messages
-
-By default the growler will show the text passed down by the action, however when mounting the component you can specify localized text. When shown, the component will verify if the text passed match a key.
+|  Option |  Default Value | Type | Description |
+|---|---|---|
+|  shownFor |  3000 | Milliseconds  | Time the growler is shown |
+| messages  | - | Object | Localization in every supported languages of your messages
+|  currentLocale | 'enUS' | String | Locale used to retrieve messages
 
 ```javascript
 import { GrowlerComponent } from 'flash-notification-react-redux';
@@ -126,12 +128,24 @@ export class App extends Component {
   render() {
     return (
       <section>
-        <GrowlerComponent messages={growlerMessages} currentLocale='enUS' />
+        <GrowlerComponent messages={growlerMessages} currentLocale='enUS' shownFor="9000" />
         {this.props.children}
       </section>
     );
   }
 }
+```
+
+### Messages
+
+By default the growler will show the text passed down by the action, however when mounting the component you can specify localized text. When shown, the component will verify if the text passed match a key.
+
+```javascript
+import { GrowlerComponent } from 'flash-notification-react-redux';
+import growlerMessages from 'locales/growler.locale.js';
+
+// usage in render
+<GrowlerComponent messages={growlerMessages} currentLocale='enUS' />
 ```
 #### currentLocale (default: enUS)
 You can specify the language used by using the currentLocale option.
@@ -144,11 +158,16 @@ You can specify the language used by using the currentLocale option.
     error: 'There was en error'
   },
   frCA: 
+     error: 'Il y a eu une erreur'
 }
 ```
 
 ### shownFor (default: 3000)
 Time the growler is shown in milliseconds
+
+```javascript
+<GrowlerComponent shownFor="6000" messages={growlerMessages} currentLocale='enUS' />
+```
 
 ## Limitations
 
