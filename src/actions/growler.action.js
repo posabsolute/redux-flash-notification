@@ -31,12 +31,33 @@ export function hideTimeOutGrowler(growler, time) {
   };
 }
 
-export function showGrowler(text, status) {
+export function showGrowler(text, type) {
   return { 
     type: GROWLER__SHOW,
     growler:{
       text,
-      status
+      type
+    }
+  };
+}
+
+
+export function showGrowlerSuccess(text) {
+  return { 
+    type: GROWLER__SHOW,
+    growler:{
+      text,
+      type:'growler--success',
+    }
+  };
+}
+
+export function showGrowlerError(text) {
+  return { 
+    type: GROWLER__SHOW,
+    growler:{
+      text,
+      type:'growler--error',
     }
   };
 }

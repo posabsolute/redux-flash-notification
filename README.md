@@ -1,9 +1,17 @@
-# flash-notification-react-redux
-An es6 growl like notification plugin for react and redux.
+# Redux Flash Notification Example
+An es6 growl-like notification plugin for react and redux.
+
+Demo: [Live Example](http://posabsolute.github.io/redux-flash-notification-example/) | [Source](https://github.com/posabsolute/redux-flash-notification-example)
+
+Better Documentation: [http://posabsolute.github.io/redux-flash-notification](http://posabsolute.github.io/redux-flash-notification)
 
 ## Integration
 
-1. Add the reducer to your root reducer
+
+1 npm install 'flash-notification-react-redux' --save
+
+
+2 Add the reducer to your root reducer
 
 ```javascript
 
@@ -16,7 +24,7 @@ const rootReducer = combineReducers({
 export default rootReducer;
 ```
 
-2. Add the growler component to your app root component so it is always accessible
+3 Add the growler component to your app root component so it is always accessible
 ```javascript
 import { GrowlerComponent } from 'flash-notification-react-redux';
 
@@ -35,7 +43,7 @@ export class App extends Component {
 }
 ```
 
-3. Add webpack loaders to load es6 files.
+4 Add webpack loaders to load es6 files.
 ```javascript
   module: {
     loaders: [{
@@ -53,21 +61,21 @@ export class App extends Component {
 };
 ```
 
-4. You're done.
+5 You're done.
 
 
 ## Usage
 
 ### With the reducer
 
-You can change the state of the growler store to show the growler.
+You can change the store state to show the growler.
 
 Example:
 
 ```javascript
 dispatch({
   type: 'GROWLER__SHOW',
-  content: {
+  growler: {
     text: 'Please enter your JIRA url',
     type: 'growler--error',
   },
@@ -77,7 +85,7 @@ dispatch({
 ```javascript
 dispatch({
   type: 'GROWLER__SHOW',
-  content: {
+  growler: {
     text: 'You have succesfully logged in',
     type: 'growler--success',
   },
@@ -86,16 +94,20 @@ dispatch({
 
 ### With the actions
 
+<<<<<<< HEAD
 
 
 If made available in your components, you can call the action showGrowler(text, status),
+=======
+If made available in your components, you can use multiple actions to show the growler component,
+>>>>>>> small api changes, fix documentation
 
 Example:
 ```javascript
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {growlerActions} from 'actions/sprints.action';
+import {GrowlerActions} from 'actions/sprints.action';
 
 const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => {
@@ -111,6 +123,16 @@ export default class SprintsListContainer extends React.Component {
   }
 }
 ```
+### Available Actions
+
+### showGrowlerSuccess(text)
+
+### showGrowlerWrror(text)
+
+### showGrowler(text, type)
+
+Used when you want to show custom messages. The type will be added as a CSS class.
+
 
 ## Options
 
@@ -168,16 +190,9 @@ You can specify the language used by using the currentLocale option.
 Time the growler is shown in milliseconds
 
 ```javascript
-<GrowlerComponent shownFor="6000" messages={growlerMessages} currentLocale='enUS' />
+<GrowlerComponent shownFor="6000" />
 ```
 
 ## Limitations
 
 This component is based on the use of redux, react, es6 & es7 (decorators) and webpack for loading the css as an import module.
-
-
-
-
-
-
-
