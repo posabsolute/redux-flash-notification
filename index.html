@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Redux-flash-notification by posabsolute</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Redux-flash-notification</h1>
+        <p class="header">An es6 growl notification plugin for redux</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/posabsolute/redux-flash-notification/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/posabsolute/redux-flash-notification/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/posabsolute/redux-flash-notification">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/posabsolute">posabsolute</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="redux-flash-notification-example" class="anchor" href="#redux-flash-notification-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redux Flash Notification Example</h1>
+
+<p>An es6 growl-like notification plugin for react and redux.</p>
+
+<p>Demo: <a href="http://posabsolute.github.io/redux-flash-notification-example/">Live Example</a> | <a href="https://github.com/posabsolute/redux-flash-notification-example">Source</a></p>
+
+<p>Better Documentation: <a href="http://posabsolute.github.io/redux-flash-notification">http://posabsolute.github.io/redux-flash-notification</a></p>
+
+<h2>
+<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Integration</h2>
+
+<p>1 npm install 'flash-notification-react-redux' --save</p>
+
+<p>2 Add the reducer to your root reducer</p>
+
+<div class="highlight highlight-source-js"><pre>
+<span class="pl-k">import</span> <span class="pl-smi">GrowlerReducer</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>flash-notification-react-redux<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">rootReducer</span> <span class="pl-k">=</span> <span class="pl-en">combineReducers</span>({
+  growler<span class="pl-k">:</span> GrowlerReducer,
+});
+
+<span class="pl-k">export</span> <span class="pl-v">default</span> <span class="pl-smi">rootReducer</span>;</pre></div>
+
+<p>3 Add the growler component to your app root component so it is always accessible</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">GrowlerComponent</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>flash-notification-react-redux<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">export</span> <span class="pl-k">class</span> <span class="pl-en">App</span> <span class="pl-k">extends</span> <span class="pl-en">Component</span> {
+  <span class="pl-k">static</span> propTypes <span class="pl-k">=</span> {
+    children<span class="pl-k">:</span> <span class="pl-smi">React</span>.<span class="pl-smi">PropTypes</span>.<span class="pl-smi">any</span>,
+  }
+  <span class="pl-en">render</span>() {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>section<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>GrowlerComponent <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        {<span class="pl-v">this</span>.<span class="pl-smi">props</span>.<span class="pl-smi">children</span>}
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span>section<span class="pl-k">&gt;</span>
+    );
+  }
+}</pre></div>
+
+<p>4 Add webpack loaders to load es6 files.</p>
+
+<div class="highlight highlight-source-js"><pre>  module<span class="pl-k">:</span> {
+    loaders<span class="pl-k">:</span> [{
+      test<span class="pl-k">:</span>[<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-cce">\.</span>jsx<span class="pl-k">$</span><span class="pl-pds">/</span></span>,<span class="pl-sr">  <span class="pl-pds">/</span><span class="pl-cce">\.</span>js<span class="pl-k">$</span><span class="pl-pds">/</span></span>],
+      loaders<span class="pl-k">:</span> [<span class="pl-s"><span class="pl-pds">'</span>react-hot<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>babel?stage=0&amp;loose[]=es6.modules<span class="pl-pds">'</span></span>],
+      include<span class="pl-k">:</span> [
+        <span class="pl-smi">path</span>.<span class="pl-en">resolve</span>(<span class="pl-c1">__dirname</span>, <span class="pl-s"><span class="pl-pds">"</span>src<span class="pl-pds">"</span></span>),
+        <span class="pl-smi">path</span>.<span class="pl-en">resolve</span>(<span class="pl-c1">__dirname</span>, <span class="pl-s"><span class="pl-pds">"</span>node_modules/flash-notification-react-redux<span class="pl-pds">"</span></span>)
+      ],
+    }, {
+      test<span class="pl-k">:</span> [<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-cce">\.</span>scss<span class="pl-k">$</span><span class="pl-pds">/</span></span>,<span class="pl-sr"> <span class="pl-pds">/</span><span class="pl-cce">\.</span>css<span class="pl-k">$</span><span class="pl-pds">/</span></span>],
+      loader<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>css?localIdentName=[path]!postcss-loader!sass<span class="pl-pds">'</span></span>,
+    }],
+  },
+};</pre></div>
+
+<p>5 You're done.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="with-the-reducer" class="anchor" href="#with-the-reducer" aria-hidden="true"><span class="octicon octicon-link"></span></a>With the reducer</h3>
+
+<p>You can change the store state to show the growler.</p>
+
+<p>Example:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">dispatch</span>({
+  type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>GROWLER__SHOW<span class="pl-pds">'</span></span>,
+  growler<span class="pl-k">:</span> {
+    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Please enter your JIRA url<span class="pl-pds">'</span></span>,
+    type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>growler--error<span class="pl-pds">'</span></span>,
+  },
+});</pre></div>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">dispatch</span>({
+  type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>GROWLER__SHOW<span class="pl-pds">'</span></span>,
+  growler<span class="pl-k">:</span> {
+    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>You have succesfully logged in<span class="pl-pds">'</span></span>,
+    type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>growler--success<span class="pl-pds">'</span></span>,
+  },
+});</pre></div>
+
+<h3>
+<a id="with-the-actions" class="anchor" href="#with-the-actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>With the actions</h3>
+
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+
+<h1>
+<a id="if-made-available-in-your-components-you-can-call-the-action-showgrowlertext-status" class="anchor" href="#if-made-available-in-your-components-you-can-call-the-action-showgrowlertext-status" aria-hidden="true"><span class="octicon octicon-link"></span></a>If made available in your components, you can call the action showGrowler(text, status),</h1>
+
+<p>If made available in your components, you can use multiple actions to show the growler component,</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>small api changes, fix documentation</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
+<p>Example:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> <span class="pl-smi">React</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> { <span class="pl-smi">bindActionCreators</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>redux<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> { <span class="pl-smi">connect</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>react-redux<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> {<span class="pl-smi">GrowlerActions</span>} <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>actions/sprints.action<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">mapStateToProps</span> <span class="pl-k">=</span> state <span class="pl-k">=&gt;</span> ({});
+<span class="pl-k">const</span> <span class="pl-c1">mapDispatchToProps</span> <span class="pl-k">=</span> dispatch <span class="pl-k">=&gt;</span> {
+  <span class="pl-k">return</span> {
+    ...<span class="pl-en">bindActionCreators</span>(growlerActions, dispatch),
+  };
+};
+
+@<span class="pl-en">connect</span>(mapStateToProps, mapDispatchToProps)
+<span class="pl-k">export</span> <span class="pl-v">default</span> <span class="pl-k">class</span> <span class="pl-en">SprintsListContainer</span> <span class="pl-k">extends</span> <span class="pl-en">React</span>.<span class="pl-smi">Component</span> {
+  <span class="pl-en">render</span>() {
+    <span class="pl-k">return</span> <span class="pl-k">&lt;</span>SprintsListComponent {...<span class="pl-smi">this</span>.<span class="pl-smi">props</span>} <span class="pl-k">/</span><span class="pl-k">&gt;</span>;
+  }
+}</pre></div>
+
+<h3>
+<a id="available-actions" class="anchor" href="#available-actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available Actions</h3>
+
+<h3>
+<a id="showgrowlersuccesstext" class="anchor" href="#showgrowlersuccesstext" aria-hidden="true"><span class="octicon octicon-link"></span></a>showGrowlerSuccess(text)</h3>
+
+<h3>
+<a id="showgrowlerwrrortext" class="anchor" href="#showgrowlerwrrortext" aria-hidden="true"><span class="octicon octicon-link"></span></a>showGrowlerWrror(text)</h3>
+
+<h3>
+<a id="showgrowlertext-type" class="anchor" href="#showgrowlertext-type" aria-hidden="true"><span class="octicon octicon-link"></span></a>showGrowler(text, type)</h3>
+
+<p>Used when you want to show custom messages. The type will be added as a CSS class.</p>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>Options are passed down when you add the component to your app root.</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default Value</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shownFor</td>
+<td>3000</td>
+<td>Milliseconds</td>
+<td>Time the growler is shown</td>
+</tr>
+<tr>
+<td>messages</td>
+<td>-</td>
+<td>Object</td>
+<td>Localization in every supported languages of your messages</td>
+</tr>
+<tr>
+<td>currentLocale</td>
+<td>enUS</td>
+<td>String</td>
+<td>Locale used to retrieve messages</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">GrowlerComponent</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>flash-notification-react-redux<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-smi">growlerMessages</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>locales/growler.locale.js<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">export</span> <span class="pl-k">class</span> <span class="pl-en">App</span> <span class="pl-k">extends</span> <span class="pl-en">Component</span> {
+  <span class="pl-en">render</span>() {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>section<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>GrowlerComponent messages<span class="pl-k">=</span>{growlerMessages} currentLocale<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>enUS<span class="pl-pds">'</span></span> shownFor<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>9000<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        {<span class="pl-v">this</span>.<span class="pl-smi">props</span>.<span class="pl-smi">children</span>}
+      <span class="pl-k">&lt;</span><span class="pl-k">/</span>section<span class="pl-k">&gt;</span>
+    );
+  }
+}</pre></div>
+
+<h3>
+<a id="messages" class="anchor" href="#messages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Messages</h3>
+
+<p>By default the growler will show the text passed down by the action, however when mounting the component you can specify localized text. When shown, the component will verify if the text passed match a key.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">GrowlerComponent</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>flash-notification-react-redux<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-smi">growlerMessages</span> <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>locales/growler.locale.js<span class="pl-pds">'</span></span>;
+
+<span class="pl-c">// usage in render</span>
+<span class="pl-k">&lt;</span>GrowlerComponent messages<span class="pl-k">=</span>{growlerMessages} currentLocale<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>enUS<span class="pl-pds">'</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h4>
+<a id="currentlocale-default-enus" class="anchor" href="#currentlocale-default-enus" aria-hidden="true"><span class="octicon octicon-link"></span></a>currentLocale (default: enUS)</h4>
+
+<p>You can specify the language used by using the currentLocale option.</p>
+
+<h4>
+<a id="messages-object-example" class="anchor" href="#messages-object-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Messages object Example</h4>
+
+<div class="highlight highlight-source-js"><pre>{
+  enUS<span class="pl-k">:</span> {
+    error<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>There was en error<span class="pl-pds">'</span></span>
+  },
+  frCA<span class="pl-k">:</span> 
+     error<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Il y a eu une erreur<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h3>
+<a id="shownfor-default-3000" class="anchor" href="#shownfor-default-3000" aria-hidden="true"><span class="octicon octicon-link"></span></a>shownFor (default: 3000)</h3>
+
+<p>Time the growler is shown in milliseconds</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">&lt;</span>GrowlerComponent shownFor<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>6000<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations</h2>
+
+<p>This component is based on the use of redux, react, es6 &amp; es7 (decorators) and webpack for loading the css as an import module.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
