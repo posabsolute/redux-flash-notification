@@ -17,9 +17,8 @@
     "growl",
     "flash",
     "redux",
-    'redux',
-    'notification',
-    'react-component',
+    "notification",
+    "react-component",
     "react"
   ],
   "author": {
