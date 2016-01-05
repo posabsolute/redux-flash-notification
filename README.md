@@ -94,13 +94,7 @@ dispatch({
 
 ### With the actions
 
-<<<<<<< HEAD
-
-
-If made available in your components, you can call the action showGrowler(text, status),
-=======
 If made available in your components, you can use multiple actions to show the growler component,
->>>>>>> small api changes, fix documentation
 
 Example:
 ```javascript
