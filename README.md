@@ -1,4 +1,4 @@
-# Redux Flash Notification Example
+# Redux Flash Notification Component for Redux
 An es6 growl-like notification plugin for react and redux.
 
 Demo: [Live Example](http://posabsolute.github.io/redux-flash-notification-example/) | [Source](https://github.com/posabsolute/redux-flash-notification-example)
