@@ -1,6 +1,6 @@
 {
   "name": "flash-notification-react-redux",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An es6 growl like notification plugin for redux",
   "main": "index.js",
   "directories": {
@@ -17,6 +17,9 @@
     "growl",
     "flash",
     "redux",
+    'redux',
+    'notification',
+    'react-component',
     "react"
   ],
   "author": {
