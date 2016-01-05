@@ -121,7 +121,7 @@ export default class SprintsListContainer extends React.Component {
 
 ### showGrowlerSuccess(text)
 
-### showGrowlerWrror(text)
+### showGrowlerError(text)
 
 ### showGrowler(text, type)
 
