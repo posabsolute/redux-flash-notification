@@ -23,7 +23,7 @@ class growlerContainer extends React.Component {
 
   render() {
     const message = this.getMessage();
-    this.props.hideTimeOutGrowler(this.props.growler, this.props.showFor);
+    this.props.hideTimeOutGrowler(this.props.growler, this.props.shownFor);
     return <Growler {...this.props} message={message} />;
   }
 }
