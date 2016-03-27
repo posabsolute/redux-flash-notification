@@ -15,7 +15,7 @@ Better Documentation: [http://posabsolute.github.io/redux-flash-notification](ht
 
 ```javascript
 
-import GrowlerReducer from 'flash-notification-react-redux';
+import { GrowlerReducer } from 'flash-notification-react-redux';
 
 const rootReducer = combineReducers({
   growler: GrowlerReducer,
