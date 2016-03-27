@@ -59,7 +59,10 @@ export class App extends Component {
   module: {
     loaders: [{
       test:[/\.jsx$/,  /\.js$/],
-      loaders: ['react-hot', 'babel?stage=0&loose[]=es6.modules'],
+      loader: 'babel',
+      query: {
+        plugins: ['transform-decorators-legacy']
+      },
       include: [
         path.resolve(__dirname, "src"),
         path.resolve(__dirname, "node_modules/flash-notification-react-redux")
