@@ -10,8 +10,19 @@ Better Documentation: [http://posabsolute.github.io/redux-flash-notification](ht
 
 1 npm install 'flash-notification-react-redux' --save
 
+2 Add redux-thunk middleware
+```
+npm install 'redux-thunk' --save
+```
 
-2 Add the reducer to your root reducer
+```javascript
+ import redux-thunk from 'redux-thunk'
+
+ const createStoreWithMiddleware = applyMiddleware(redux-thunk)(createStore);
+ const store = createStoreWithMiddleware()
+```
+
+3 Add the reducer to your root reducer
 
 ```javascript
 
@@ -24,7 +35,7 @@ const rootReducer = combineReducers({
 export default rootReducer;
 ```
 
-3 Add the growler component to your app root component so it is always accessible
+4 Add the growler component to your app root component so it is always accessible
 ```javascript
 import { GrowlerComponent } from 'flash-notification-react-redux';
 
@@ -43,7 +54,7 @@ export class App extends Component {
 }
 ```
 
-4 Add webpack loaders to load es6 files.
+5 Add webpack loaders to load es6 files.
 ```javascript
   module: {
     loaders: [{
@@ -61,7 +72,7 @@ export class App extends Component {
 };
 ```
 
-5 You're done.
+6 You're done.
 
 
 ## Usage
