@@ -16,9 +16,9 @@ npm install 'redux-thunk' --save
 ```
 
 ```javascript
- import redux-thunk from 'redux-thunk'
+ import reduxThunk from 'redux-thunk'
 
- const createStoreWithMiddleware = applyMiddleware(redux-thunk)(createStore);
+ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
  const store = createStoreWithMiddleware()
 ```
 
