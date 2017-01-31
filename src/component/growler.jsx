@@ -12,7 +12,7 @@ const GrowlerComponent = ({growler, hideGrowler, message}) => {
 
   return (
     <div className={growlerClass} onClick={ (evt) => { evt.preventDefault(); hideGrowler(growler);} }>
-      <span className="icon {growler.icon}"></span>
+      <span className={`icon ${growler.icon}`}></span>
       { message }
     </div>
   );
