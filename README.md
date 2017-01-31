@@ -173,11 +173,11 @@ export class App extends Component {
 By default the growler will show the text passed down by the action, however when mounting the component you can specify localized text. When shown, the component will verify if the text passed match a key.
 
 ```javascript
-import { GrowlerComponent } from 'flash-notification-react-redux';
+import { GrowlerContainer } from 'flash-notification-react-redux';
 import growlerMessages from 'locales/growler.locale.js';
 
 // usage in render
-<GrowlerComponent messages={growlerMessages} currentLocale='enUS' />
+<GrowlerContainer messages={growlerMessages} currentLocale='enUS' />
 ```
 #### currentLocale (default: enUS)
 You can specify the language used by using the currentLocale option.
@@ -198,7 +198,7 @@ You can specify the language used by using the currentLocale option.
 Time the growler is shown in milliseconds
 
 ```javascript
-<GrowlerComponent shownFor="6000" />
+<GrowlerContainer shownFor="6000" />
 ```
 
 ## Limitations
