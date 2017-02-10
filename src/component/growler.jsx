@@ -1,5 +1,5 @@
 import React from 'react';
-import 'style!./growler.scss';
+import 'style-loader!./growler.scss';
 import classNames from 'classnames/bind';
 import errors from 'classnames/bind';
 

@@ -1,17 +1,17 @@
 {
-  "name": "flash-notification-react-redux",
+  "name": "react-redux-flash-notification",
   "version": "1.0.4",
   "description": "An es6 growl like notification plugin for redux",
-  "main": "index.js",
+  "main": "lib/index.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/posabsolute/flash-notification-react-redux.git"
+    "url": "git+https://github.com/andreyluiz/react-redux-flash-notification.git"
   },
   "keywords": [
     "growl",
@@ -22,14 +22,13 @@
     "react"
   ],
   "author": {
-    "name": "Cedric Dugas"
+    "name": "Andrey Luiz"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/posabsolute/flash-notification-react-redux/issues"
+    "url": "https://github.com/andreyluiz/react-redux-flash-notification/issues"
   },
-  "homepage": "https://github.com/posabsolute/flash-notification-react-redux#readme",
-  "readme": "# flash-notification-react-redux\nAn es6 growl like notification plugin for redux.\n\n## Integration\n\n1. Add the reducer to your root reducer\n\n```javascript\n\nimport { growlerReducer } from 'flash-notification-react-redux';\n\nconst rootReducer = combineReducers({\n  growlerReducer,\n});\n\nexport default rootReducer;\n```\n\n2. Add the growler component to your app root component so it is always accessible\n```javascript\nimport { GrowlerComponent } from 'flash-notification-react-redux';\n\nexport class App extends Component {\n  static propTypes = {\n    children: React.PropTypes.any,\n  }\n  render() {\n    return (\n      <section>\n        <GrowlerComponent />\n        {this.props.children}\n      </section>\n    );\n  }\n}\n\n3. You're done.\n\n\n## Limitations\n\nThis component is based on the use of redux, react, es6 & es7 (decorators), and webpack for loading the css as an import module. It's a tiny codebase so it is easily portable if you want to bend it to your use case.\n\n\n\n\n\n\n\n",
+  "homepage": "https://github.com/andreyluiz/react-redux-flash-notification#readme",
   "readmeFilename": "README.md",
   "gitHead": "8e11d910531ec4994e0f12052e82838be557ad6a",
   "_id": "flash-notification-react-redux@1.0.1",
@@ -40,5 +39,19 @@
     "react": "^0.14.3",
     "react-redux": "^4.0.5",
     "redux": "^3.0.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "node-sass": "^4.5.0",
+    "react-hot-loader": "^1.3.1",
+    "sass-loader": "^5.0.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1"
   }
 }

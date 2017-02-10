@@ -7,37 +7,39 @@ Better Documentation: [http://posabsolute.github.io/redux-flash-notification](ht
 
 ## Integration
 
-
-1 npm install 'flash-notification-react-redux' --save
-
-2 Add redux-thunk middleware
+**1** Install it
 ```
-npm install 'redux-thunk' --save
+npm install react-redux-flash-notification --save
+```
+
+**2** Add thunk middleware
+```
+npm install redux-thunk --save
 ```
 
 ```javascript
- import reduxThunk from 'redux-thunk'
+ import thunk from 'redux-thunk'
 
- const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
- const store = createStoreWithMiddleware()
+ const store = createStore(rootReducer, applyMiddleware(thunk));
 ```
 
-3 Add the reducer to your root reducer
+**3** Add the reducer to your root reducer
 
 ```javascript
 
-import { GrowlerReducer } from 'flash-notification-react-redux';
+import { GrowlerReducer as growler } from 'react-redux-flash-notification';
 
 const rootReducer = combineReducers({
-  growler: GrowlerReducer,
+  growler,
 });
 
 export default rootReducer;
 ```
 
-4 Add the growler component to your app root component so it is always accessible
+**4** Add the growler component to your app root component so it is always accessible
+
 ```javascript
-import { GrowlerContainer } from 'flash-notification-react-redux';
+import { GrowlerContainer } from 'react-redux-flash-notification';
 
 export class App extends Component {
   static propTypes = {
@@ -54,29 +56,7 @@ export class App extends Component {
 }
 ```
 
-5 Add webpack loaders to load es6 files.
-```javascript
-  module: {
-    loaders: [{
-      test:[/\.jsx$/,  /\.js$/],
-      loader: 'babel',
-      query: {
-        plugins: ['transform-decorators-legacy']
-      },
-      include: [
-        path.resolve(__dirname, "src"),
-        path.resolve(__dirname, "node_modules/flash-notification-react-redux")
-      ],
-    }, {
-      test: [/\.scss$/, /\.css$/],
-      loader: 'css?localIdentName=[path]!postcss-loader!sass',
-    }],
-  },
-};
-```
-
-6 You're done.
-
+**5** You're done.
 
 ## Usage
 
@@ -203,4 +183,9 @@ Time the growler is shown in milliseconds
 
 ## Limitations
 
-This component is based on the use of redux, react, es6 & es7 (decorators) and webpack for loading the css as an import module.
+No limitations! :tada:
+
+## About this version
+This repository is a fork of [redux-flash-notification](https://github.com/posabsolute/redux-flash-notification). The difference is that, instead of configuring webpack + babel to use the module (and add unwanted plugins, like transform-decorators-legacy) you just import it and use it at will.
+
+Thank you very much [Cedric Dugas](https://github.com/posabsolute) for the amazing job in the original repository.
