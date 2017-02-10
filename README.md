@@ -183,9 +183,4 @@ Time the growler is shown in milliseconds
 
 ## Limitations
 
-No limitations! :tada:
-
-## About this version
-This repository is a fork of [redux-flash-notification](https://github.com/posabsolute/redux-flash-notification). The difference is that, instead of configuring webpack + babel to use the module (and add unwanted plugins, like transform-decorators-legacy) you just import it and use it at will.
-
-Thank you very much [Cedric Dugas](https://github.com/posabsolute) for the amazing job in the original repository.
+Does not support Server Side Rendering.
