@@ -6,9 +6,9 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: "style!css" },
-            { test: /\.js$/, loaders: ['react-hot', 'babel?stage=0&loose[]=es6.modules'] },
-            { test: /\.jsx$/, loaders:['react-hot', 'babel?stage=0&loose[]=es6.modules'] }
+            { test: /\.css$/, loader: "style-loader!css" },
+            { test: /\.js$/, loaders: ['react-hot-loader', 'babel-loader?stage=0&loose[]=es6.modules'] },
+            { test: /\.jsx$/, loaders:['react-hot-loader', 'babel-loader?stage=0&loose[]=es6.modules'] }
         ]
     }
 };
