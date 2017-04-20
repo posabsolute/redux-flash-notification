@@ -1,4 +1,4 @@
-import {GROWLER__HIDE, GROWLER__HIDED, GROWLER__SHOW} from './types/growler.types';
+import {GROWLER__HIDE, GROWLER__HIDDEN, GROWLER__SHOW} from './types/growler.types';
 let hideTimeOut;
 let hiddenTimeOut;
 /*
@@ -11,7 +11,7 @@ export function hideGrowler() {
     clearTimeout(hideTimeOut);
     hiddenTimeOut = window.setTimeout(() =>{
       dispatch({
-        type: GROWLER__HIDED,
+        type: GROWLER__HIDDEN,
       });
     }, 500);
   };
@@ -32,7 +32,7 @@ export function hideTimeOutGrowler(growler, time) {
 }
 
 export function showGrowler(text, type) {
-  return { 
+  return {
     type: GROWLER__SHOW,
     growler:{
       text,
@@ -43,7 +43,7 @@ export function showGrowler(text, type) {
 
 
 export function showGrowlerSuccess(text) {
-  return { 
+  return {
     type: GROWLER__SHOW,
     growler:{
       text,
@@ -53,7 +53,7 @@ export function showGrowlerSuccess(text) {
 }
 
 export function showGrowlerError(text) {
-  return { 
+  return {
     type: GROWLER__SHOW,
     growler:{
       text,
