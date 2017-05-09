@@ -1,4 +1,4 @@
-import {GROWLER__HIDE, GROWLER__HIDED, GROWLER__SHOW} from '../actions/types/growler.types';
+import {GROWLER__HIDE, GROWLER__HIDDEN, GROWLER__SHOW} from '../actions/types/growler.types';
 
 const initialState = {
   text: '',
@@ -23,7 +23,7 @@ export default function growlerReducer(state = initialState, action) {
       status: 'hide',
     };
 
-  case GROWLER__HIDED:
+  case GROWLER__HIDDEN:
     return {
       ...state,
       ...action.growler,
