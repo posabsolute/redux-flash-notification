@@ -5,10 +5,15 @@ module.exports = {
         filename: "es5/index.js"
     },
     module: {
-        loaders: [
-            { test: /\.css$/, loader: "style-loader!css" },
-            { test: /\.js$/, loaders: ['react-hot-loader', 'babel-loader?stage=0&loose[]=es6.modules'] },
-            { test: /\.jsx$/, loaders:['react-hot-loader', 'babel-loader?stage=0&loose[]=es6.modules'] }
+        rules: [{
+            test: /\.css$/,
+            use: [{
+                'loader': 'style-loader'
+            }, {
+                'loader': 'css'
+            }] },
+            { test: /\.js$/, use: ['react-hot-loader', 'babel-loader?stage=0&loose[]=es6.modules'] },
+            { test: /\.jsx$/, use:['react-hot-loader', 'babel-loader?stage=0&loose[]=es6.modules'] }
         ]
     }
 };
